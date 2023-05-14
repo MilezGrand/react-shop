@@ -3,7 +3,7 @@ import Card from '../components/Card/Card';
 
 
 function Home ({  items, searchValue, setSearchValue, onChancheSearchInput, onAddToCart, onFavorite, isLoading}) {
-    
+
    
     const renderItems = () => {
         const filteredItems = items.filter((item) => 

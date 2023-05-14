@@ -10,21 +10,27 @@ function Card( {
   price, 
   onFavorite, 
   onPlus, 
-  favorited, 
-  added = false, 
   loading = false
 }) {
   const { isItemAdded } = React.useContext(AppContext);
-  const [isFavorite, setIsFavorite] = React.useState(favorited);
+  const { favorited } = React.useContext(AppContext);
+  const [isFavorite, setIsFavorite] = React.useState(false);
 
   const onClickPlus = () => {
     onPlus({ id, title, imageUrl, price});
-  }
-  
+  };
+
   const onClickFavorite = () => {
     onFavorite({ id, title, imageUrl, price});
     setIsFavorite(!isFavorite);
-  }
+  };
+
+  React.useEffect(() => {
+    const foundItem = favorited.find(item => item.id === id);
+    if (foundItem) {
+      setIsFavorite(true)
+    }
+  }, [])
 
   return(
       <div className={s.card}>

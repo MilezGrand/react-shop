@@ -6,7 +6,7 @@ import axios from 'axios';
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function Drawer ({ onClose, items = [], onRemove}) {
-    const { cartItems, setCartItems } = React.useContext(AppContext);
+    const { cartItems, setCartItems, getTotalPrice} = React.useContext(AppContext);
     const [orderId, setOrderId] = React.useState(null);
     const [isOrderCompleted, setIsOrderCompleted] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -60,24 +60,27 @@ function Drawer ({ onClose, items = [], onRemove}) {
                         
                     </div>
                     ))}
+                    
+
+                    </div>
+
                     <div className="cartTotalBlock">
                             <ul >
                                 <li>
                                     <span>Итого</span>
                                     <div></div>
-                                    <b>21 498 руб.</b>
+                                    <b>{getTotalPrice()} руб.</b>
                                 </li>
                                 <li>
                                     <span>Налог 5%</span>
                                     <div></div>
-                                    <b>1074 руб.</b>
+                                    <b>{Math.floor((getTotalPrice() * 0.05) )} руб.</b>
                                 </li>
                             </ul>
                         <button disabled={isLoading} onClick={onClickOrder} className="greenButton">
                             Оформить заказ 
                             <img src="/img/arrow.svg" alt=""/>
                         </button>
-                        </div>
                     </div>
                 </div> : 
                 <Info 
