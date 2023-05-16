@@ -10,7 +10,7 @@ function Favorites () {
         <div className="d-flex align-center justify-between mb-40">
           <h1>Мои закладки</h1>
         </div>
-        <div className="d-flex flex-wrap">
+        <div className="d-flex flex-wrap products">
         {favorited.map((item, index) => (
             <Card
             key={index} 

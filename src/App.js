@@ -54,7 +54,7 @@ function App() {
       axios.delete(`https://615a0fed601e6f0017e5a3b1.mockapi.io/cart/${data[0]._id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   }
-
+  
   const onFavorite = async (obj) => {
     try {
       if (favorited.find(favObj => Number(favObj.id) === Number(obj.id))) {
@@ -87,12 +87,13 @@ function App() {
     });
     return total
 }
+
   return (
     <AppContext.Provider value={{ items, cartItems, favorited, isItemAdded, onFavorite, setCartOpened, setCartItems, getTotalPrice}}>
       <div className="wrapper clear">
-        {cartOpened ? <Drawer items = {cartItems} onClose={()=> setCartOpened(false)} onRemove={onRemoveItem}/> : null}
+        {cartOpened ? <Drawer items = {cartItems} onClose={() => {setCartOpened(false); document.body.style.overflow = "visible"}} onRemove={onRemoveItem}/> : null}
         
-        <Header onClickCart={() => setCartOpened(true)} />
+        <Header onClickCart={() => {setCartOpened(true); document.body.style.overflow = "hidden"}} />
 
         <Route path="/" exact>
           <Home 

@@ -23,8 +23,8 @@ function Home ({  items, searchValue, setSearchValue, onChancheSearchInput, onAd
     
     return(
         <div className="content p-40">
-        <div className="d-flex align-center justify-between mb-40">
-          <h1>{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кроссовки'}</h1>
+        <div className="d-flex  justify-between mb-40 search_container">
+          <h1 >{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кроссовки'}</h1>
 
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt=""/>
@@ -33,7 +33,7 @@ function Home ({  items, searchValue, setSearchValue, onChancheSearchInput, onAd
           </div>
         </div>
         
-        <div className="d-flex flex-wrap">{renderItems()}</div>
+        <div className="d-flex flex-wrap products">{renderItems()}</div>
 
       </div>
     )
