@@ -9,10 +9,10 @@ function Header (props) {
         
         <Link to="/">
             <div className="d-flex align-center">
-                <img width={40} height={40} src="/img/logo.png" alt=""/>
+                <img width={55} height={50} src="/img/logo.png" alt=""/>
                 <div>
-                    <h3 className="text-uppercase">Sneaker Box</h3>
-                    <p className="opacity-5">Магазин лучших кроссовок</p>
+                    <h3 className="text-uppercase">RELAW</h3>
+                    <p className="opacity-5">Магазин уличной одежды</p>
                 </div>
             </div>
         </Link>
