@@ -4,46 +4,62 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   background-color: #f0f0f0;
-  // overflow: hidden;
 }
 
 * {
   font-family: 'inter', system-ui;
 }
+
 .wrapper {
   background: #FFFfFF;
-  box-shadow:0px 10px 20px rgba(0,0,0,0.04);
-  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
   max-width: 1080px;
   margin: 12px auto 12px;
-  // max-height: 97vh;
 }
 
 header {
   border-bottom: 1px solid #eaeaea;
   padding: 40px;
-    img {
-      margin-right: 15px;
-      cursor: pointer;
-    }
-    h3,p {
-      margin: 0;
-    }
-    ul {
-      li:first-child {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 100px;
-        img, span {
-          margin: 0 auto;
-        }
 
-        span {
-          margin-top: 15px;
-        }
+  img {
+    margin-right: 15px;
+  }
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  ul {
+    li {
+      cursor: pointer;
+      &:hover img {
+        opacity: 1.0;
+      }
+
+      img {
+        opacity: 0.7;
       }
     }
+
+    li:first-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100px;
+
+
+      img,
+      span {
+        margin: 0 auto;
+      }
+
+      span {
+        margin-top: 15px;
+      }
+    }
+  }
 }
 
 .content {
@@ -80,6 +96,29 @@ header {
   }
 }
 
+.filter {
+  gap: 15px;
+  flex-wrap: wrap;
+
+  li {
+    border-radius: 10px;
+    border: 1px solid #F3F3F3;
+    padding: 13px;
+
+    &:hover {
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+  }
+}
+
+.selected {
+  background-color: #bf1e2e;
+  color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+
+}
+
 .search-block {
   border: 1px solid #F3F3F3;
   border-radius: 10px;
@@ -100,6 +139,8 @@ header {
     padding: 13px;
     font-size: 16px;
     width: 200px;
+
+
   }
 }
 
@@ -131,6 +172,7 @@ header {
     margin-bottom: 40px;
     max-height: 65vh;
   }
+
   h2 {
     margin: 0;
   }
@@ -142,7 +184,7 @@ header {
     display: block;
     margin-bottom: 20px;
 
-    li{
+    li {
       display: flex;
       align-items: flex-end;
       margin-bottom: 20px;
@@ -164,14 +206,14 @@ header {
     &:disabled {
       animation: button-loading 0.6s ease-in-out infinite;
     }
-    
+
     &:disabled {
       background-color: #bebebe !important;
       cursor: default;
     }
 
     &:hover {
-      img{
+      img {
         transform: translateX(5px);
       }
     }
@@ -183,34 +225,35 @@ header {
       transition: transform 0.15s ease-in-out;
     }
   }
-  
+
 }
+
 .greenButton {
-  
-    width: 100%;
-    height: 55px;
-    background: #bf1e2e;
-    border-radius: 10px;
-    border: 0;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2 ease-in-out;
 
-    &:hover {
-      background: lighten(#bf1e2e, 5%);
-    }
+  width: 100%;
+  height: 55px;
+  background: #bf1e2e;
+  border-radius: 10px;
+  border: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2 ease-in-out;
 
-    &:active {
-      background: darken(#bf1e2e, 5%);
-    }
+  &:hover {
+    background: lighten(#bf1e2e, 5%);
+  }
+
+  &:active {
+    background: darken(#bf1e2e, 5%);
+  }
 }
 
 
 .cartItem {
   border: 1px solid #f3f3f3;
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
   padding: 20px;
 
@@ -243,13 +286,20 @@ header {
   }
 }
 
+footer {
+  border-top: 1px solid #eaeaea;
+  padding: 40px;
+}
+
 @keyframes button-loading {
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
+
   100% {
     opacity: 1;
   }
@@ -262,6 +312,7 @@ header {
 
   header {
     padding: 15px;
+
     p {
       display: none;
     }
@@ -279,25 +330,26 @@ header {
 
     .search-block {
       width: 100%;
+      margin-bottom: 10px;
     }
   }
 
-  .products{
+  .products {
     justify-content: center;
-    
+
   }
 
-  .drawer{
+  .drawer {
     position: fixed;
     overflow: hidden;
     width: 100vw;
-    
+
     .items {
       max-height: 560px;
     }
   }
 
-  .drawer::after{
+  .drawer::after {
     .products {
       display: none;
       visibility: hidden;
