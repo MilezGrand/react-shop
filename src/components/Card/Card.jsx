@@ -2,6 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import s from "./Card.module.scss";
 import AppContext from "../../context";
+import { Link } from "react-router-dom";
 
 function Card({
   id,
@@ -52,22 +53,11 @@ function Card({
       ) : (
         <>
           <div className={s.favorite} onClick={onClickFavorite}>
-            <img
-              src={
-                isFavorite
-                  ? "liked.svg"
-                  : "unliked.svg"
-              }
-              alt=""
-            />
+            <img src={isFavorite ? "liked.svg" : "unliked.svg"} alt="" />
           </div>
-
-          <img
-            width="100%"
-            height={235}
-            src={imageUrl}
-            alt=""
-          />
+          <Link to={`/product/${id}?size=M`}>
+            <img width="100%" height={235} src={'/'+ imageUrl} alt="" />
+          </Link>
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
             <div className="d-flex flex-column">
@@ -77,11 +67,7 @@ function Card({
             <img
               className={s.plus}
               onClick={onClickPlus}
-              src={
-                isItemAdded(id)
-                  ? "btn-checked.svg"
-                  : "btn-plus.svg"
-              }
+              src={isItemAdded(id) ? "/btn-checked.svg" : "/btn-plus.svg"}
               alt="plus"
             />
           </div>

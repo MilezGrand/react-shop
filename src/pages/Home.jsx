@@ -6,13 +6,13 @@ function Home({
   items,
   searchValue,
   setSearchValue,
-  onChancheSearchInput,
+  onChangeSearchInput,
   onAddToCart,
   onFavorite,
   isLoading,
-  type,
 }) {
   const location = useLocation();
+
   const renderItems = () => {
     const filteredItems = items.filter((item) =>
       item.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -31,10 +31,9 @@ function Home({
   return (
     <div className="content p-40">
       <div className="d-flex justify-between mb-40 search_container">
-
         <ul className="d-flex filter">
           <li className={location.search === "" ? "selected" : ""}>
-            <Link to="/react-shop/">Все товары</Link>
+            <Link to="/=">Все товары</Link>
           </li>
           <li className={location.search === "?type=hoodie" ? "selected" : ""}>
             <Link to="?type=hoodie">Толстовки</Link>
@@ -50,17 +49,17 @@ function Home({
         </ul>
 
         <div className="search-block d-flex ">
-          <img src="search.svg" alt="" />
+          <img src="/search.svg" alt="" />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}
               className="clear cu-p"
-              src="btn-remove.svg"
+              src="/btn-remove.svg"
               alt=""
             />
           )}
           <input
-            onChange={onChancheSearchInput}
+            onChange={onChangeSearchInput}
             value={searchValue}
             placeholder="Поиск..."
           />

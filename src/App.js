@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import Home from "./pages/Home";
@@ -8,8 +8,10 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import AppContext from "./context";
 import Footer from "./components/Footer";
+import Product from "./pages/Product";
 
-function App() {
+
+const App = () => {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
   const [favorited, setFavorited] = React.useState([]);
@@ -17,7 +19,6 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
   const [type, setType] = React.useState("Все товары");
-
   const location = useLocation();
 
   React.useEffect(() => {
@@ -34,8 +35,7 @@ function App() {
       );
 
       setIsLoading(false);
-
-      setCartItems(cartResponse.data);
+      setCartItems(cartResponse.data)
       setFavorited(favoritesResponse.data);
       setItems(itemsResponse.data);
     }
@@ -107,7 +107,7 @@ function App() {
     }
   };
 
-  const onChancheSearchInput = (event) => {
+  const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
   };
 
@@ -134,6 +134,7 @@ function App() {
         setCartOpened,
         setCartItems,
         getTotalPrice,
+        onAddToCart,
       }}
     >
       <div className="wrapper clear">
@@ -155,26 +156,32 @@ function App() {
           }}
         />
 
-        <Route path="/react-shop/" exact>
-          <Home
-            items={items}
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            onChancheSearchInput={onChancheSearchInput}
-            onAddToCart={onAddToCart}
-            onFavorite={onFavorite}
-            cartItems={cartItems}
-            isLoading={isLoading}
-            type={type}
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={
+              <Home
+                items={items}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                onChangeSearchInput={onChangeSearchInput}
+                onAddToCart={onAddToCart}
+                onFavorite={onFavorite}
+                cartItems={cartItems}
+                isLoading={isLoading}
+                type={type}
+              />
+            }
           />
-        </Route>
-        <Route path="/react-shop/favorites">
-          <Favorites />
-        </Route>
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/product/:id" element={<Product />} />
+        </Routes>
+
         <Footer />
       </div>
     </AppContext.Provider>
   );
-}
+};
 
 export default App;

@@ -40,40 +40,39 @@ function Drawer({ onClose, items = [], onRemove }) {
   };
 
   return (
-    <div className="overlay">
-      <div className="drawer">
-        <h2 className="d-flex justify-between mb-30 ">
-          Корзина{" "}
+    <div className="overlay" onClick={onClose}>
+      <div className="drawer" onClick={(e) => e.stopPropagation()}>
+        <h2 className="d-flex justify-between ">
+          Корзина
           <img
             onClick={onClose}
             className="cu-p"
-            src="btn-remove.svg"
-            alt=""
+            src="/btn-remove.svg"
+            alt="close"
           />
         </h2>
+
+        <h4 className="opacity-5">{`Товары (${items.length})`}</h4>
 
         {items.length > 0 ? (
           <div className="d-flex flex-column flex">
             <div className="items">
               {items.map((obj) => (
-                <div>
-                  <div
-                    key={obj.id}
-                    className="cartItem d-flex align-center  mb-20"
-                  >
+                <div key={obj.id}>
+                  <div className="cartItem d-flex align-center  mb-20">
                     <div
-                      style={{ backgroundImage: `url(./${obj.imageUrl})` }}
+                      style={{ backgroundImage: `url(/${obj.imageUrl})` }}
                       className="cartItemImg"
                     ></div>
                     <div className="mr-20 flex">
                       <p className="mb-5">{obj.title}</p>
-                      <b>{obj.price}</b>
+                      <b>{obj.price} руб.</b>
                     </div>
                     <img
                       onClick={() => onRemove(obj.id)}
                       className="removeBtn"
-                      src="btn-remove.svg"
-                      alt=""
+                      src="/btn-remove.svg"
+                      alt="remove"
                     />
                   </div>
                 </div>
@@ -87,11 +86,6 @@ function Drawer({ onClose, items = [], onRemove }) {
                   <div></div>
                   <b>{getTotalPrice()} руб.</b>
                 </li>
-                <li>
-                  <span>Налог 5%</span>
-                  <div></div>
-                  <b>{Math.floor(getTotalPrice() * 0.05)} руб.</b>
-                </li>
               </ul>
               <button
                 disabled={isLoading}
@@ -99,7 +93,7 @@ function Drawer({ onClose, items = [], onRemove }) {
                 className="greenButton"
               >
                 Оформить заказ
-                <img src="arrow.svg" alt="" />
+                <img src="/arrow.svg" alt="" />
               </button>
             </div>
           </div>
@@ -111,11 +105,7 @@ function Drawer({ onClose, items = [], onRemove }) {
                 ? `Ваш заказ #${orderId} передан в доставку`
                 : "Добавьте что нибудь"
             }
-            image={
-              isOrderCompleted
-                ? "complete-order.jpg"
-                : "empty-cart.jpg"
-            }
+            image={isOrderCompleted ? "complete-order.jpg" : "empty-cart.jpg"}
           />
         )}
       </div>
