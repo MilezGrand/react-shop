@@ -38,20 +38,20 @@ const Product = () => {
   }, [id, onAddToCart]);
 
   const onBackClick = () => {
-    navigate("/");
+    navigate("/react-shop/");
   };
 
   return (
     <div className="content p-40">
       <button className="backButton" onClick={onBackClick}>
-        <img src="/arrow.svg" alt="back" />
+        <img src="https://milezgrand.github.io/react-shop/arrow.svg" alt="back" />
         Назад
       </button>
 
       {!isLoading && (
         <div className="d-flex productInfo justify-around">
           <div>
-            <img src={`/${product.imageUrl}`} alt="preview" />
+            <img src={`https://milezgrand.github.io/react-shop/${product.imageUrl}`} alt="preview" />
           </div>
           <div className="w100p ml-50 d-flex flex-column justify-between">
             <div>

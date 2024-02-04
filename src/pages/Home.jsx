@@ -49,12 +49,12 @@ function Home({
         </ul>
 
         <div className="search-block d-flex ">
-          <img src="/search.svg" alt="" />
+          <img src="./search.svg" alt="" />
           {searchValue && (
             <img
               onClick={() => setSearchValue("")}
               className="clear cu-p"
-              src="/btn-remove.svg"
+              src="./btn-remove.svg"
               alt=""
             />
           )}

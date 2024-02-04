@@ -158,7 +158,7 @@ const App = () => {
 
         <Routes>
           <Route
-            path="/"
+            path="/react-shop/"
             exact
             element={
               <Home
@@ -174,8 +174,8 @@ const App = () => {
               />
             }
           />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/react-shop/favorites" element={<Favorites />} />
+          <Route path="/react-shop/product/:id" element={<Product />} />
         </Routes>
 
         <Footer />

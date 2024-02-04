@@ -4,10 +4,24 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   background-color: #f0f0f0;
+  
+  
+  &::-webkit-scrollbar-track {
+    background: rgb(216, 216, 216); 
+    border-radius: 50px; 
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(160, 160, 160); 
+    border-radius: 50px; 
+  }
 }
 
 * {
   font-family: 'inter', system-ui;
+
+  &::-webkit-scrollbar {
+    width: 5px; 
+  }
 }
 
 .wrapper {
@@ -161,17 +175,31 @@ header {
   flex-direction: column;
   position: fixed;
   width: 420px;
-  height: 100vh;
+  height: 100dvh;
   right: 0;
   background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
-
+  scrollbar-gutter: stable;
+  
   .items {
     flex: 1;
     overflow-y: auto;
     margin-bottom: 40px;
-    max-height: 65vh;
+    max-height: 65dvh;
+    overscroll-behavior: contain;
+    
+    &::-webkit-scrollbar-thumb {
+      border-radius: 50px; 
+      transition: background 0.5s ease-in-out;
+      background: transparent;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb  {
+        background: rgba(160, 160, 160, 100);
+      }
+    }
   }
 
   h2 {

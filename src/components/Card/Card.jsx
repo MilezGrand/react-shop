@@ -55,8 +55,8 @@ function Card({
           <div className={s.favorite} onClick={onClickFavorite}>
             <img src={isFavorite ? "liked.svg" : "unliked.svg"} alt="" />
           </div>
-          <Link to={`/product/${id}?size=M`}>
-            <img width="100%" height={235} src={'/'+ imageUrl} alt="" />
+          <Link to={`/react-shop/product/${id}?size=M`}>
+            <img width="100%" height={235} src={'https://milezgrand.github.io/react-shop/'+ imageUrl} alt="preview" />
           </Link>
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
@@ -67,7 +67,7 @@ function Card({
             <img
               className={s.plus}
               onClick={onClickPlus}
-              src={isItemAdded(id) ? "/btn-checked.svg" : "/btn-plus.svg"}
+              src={isItemAdded(id) ? "https://milezgrand.github.io/react-shop/btn-checked.svg" : "https://milezgrand.github.io/react-shop/btn-plus.svg"}
               alt="plus"
             />
           </div>
